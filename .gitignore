@@ -1,3 +1,4 @@
+l
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -14,8 +15,8 @@ hs_err_pid*
 # introsde ignore list
 solutions/
 */solutions/
-# myworkspace/
-#*/myworkspace/
+ myworkspace/
+*/myworkspace/
 .DS_Store
 libraries/
 */libraries/
