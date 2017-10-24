@@ -1,0 +1,14 @@
+clean
+compile
+download-ivy
+execute.HPJson
+execute.HPReader
+execute.HPWriter
+execute.JAXBMarshaller
+execute.JAXBUnMarshaller
+execute.JavaToXML
+execute.dozerExample
+generate
+init
+install-ivy
+resolve

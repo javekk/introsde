@@ -3,6 +3,8 @@
 // If a class is in another package, in other to see it, you need to import it
 package examples.pojos;
 
+import java.sql.Date;
+
 // This is a typical Java Class. 
 public class Person {
 
@@ -13,6 +15,9 @@ public class Person {
 	private String lastname;	// this is an attribute of the class String
 	private HealthProfile hProfile;	// this is an attribute of the class HealthProfile 
 	
+	private Date birthdate;
+	
+	private Long id;
 	// constructors in java are used to create an object of the class 
 	// (a java program basically plays with objects of different classes)
 	// this constructor creates a Person object with a particular firstname, lastname and health profile
@@ -20,16 +25,30 @@ public class Person {
 		this.setFirstname(fname);
 		this.setLastname(lname);
 		this.hProfile=hp;
+		this.id=this.strToLong(fname,lname);
+	}
+	public Person(String fname, String lname, Date birthdate) {
+		this.setFirstname(fname);
+		this.setLastname(lname);
+		this.birthdate=birthdate;
+		this.hProfile=new HealthProfile();
+		this.id=this.strToLong(fname,lname);
 	}
 	public Person(String fname, String lname) {
 		this.setFirstname(fname);
 		this.setLastname(lname);
 		this.hProfile=new HealthProfile();
+		this.id=this.strToLong(fname,lname);
 	}
 	public Person() {
 		this.firstname="Pinco";
 		this.lastname="Pallino";
 		this.hProfile=new HealthProfile();
+		this.id=this.strToLong(this.firstname,this.lastname);
+	}
+
+	private long strToLong(String fname,String lname ) {
+		return Long.parseLong(fname, 36) + Long.parseLong(lname, 36);
 	}
 
 	// classes have methods, which are basically pieces of programs that can be executed on objects of the class
@@ -51,5 +70,14 @@ public class Person {
 	}
 	public void sethProfile(HealthProfile hProfile) {
 		this.hProfile = hProfile;
+	}
+	public Date getBirthdate() {
+		return birthdate;
+	}
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+	public long getId() {
+		return id;
 	}
 }

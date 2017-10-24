@@ -18,6 +18,7 @@
       <xsd:element name="author" type="xsd:string"/>
     </xsd:sequence>
     <xsd:attribute name="edition" type="xsd:string"/>
+    <xsd:attribute name="year" type="xsd:int"/>
  </xsd:complexType>
 
 

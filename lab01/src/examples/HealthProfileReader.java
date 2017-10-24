@@ -1,5 +1,6 @@
 package examples;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,8 +48,59 @@ public class HealthProfileReader {
 				System.out.println(fname+" "+lname+" is not in the database");
 			}
 		}
+		createPerson("Cane", "Dog", new Date(System.currentTimeMillis()));
+		long pId = database.get("Cane" + " " + "Dog").getId();
+		displayHealthProfile(pId);
+		updateHealthProfile(pId, 192. , 123.);
 		// add the case where there are 3 parameters, the third being a string that matches "weight", "height" or "bmi"
 	}
+	
+	public static void createPerson(String firstname, String lastname, Date birthdate) {
+		Person p = new Person(firstname, lastname, birthdate);
+		database.put(p.getFirstname()+ " " + p.getLastname(), p);
+	}
+	
+	public static void displayHealthProfile(Long personId) {
+		boolean gotIt = false;
+		for (Map.Entry<String, Person> entry : database.entrySet()){
+			if(entry.getValue() instanceof Person) {
+				Person p = (Person) entry.getValue();
+				if(p.getId() == personId) {
+					System.out.println(p.getFirstname()
+										+" "
+										+ p.getLastname()
+										+"'s health profile is: "
+										+p.gethProfile().toString());
+					gotIt=true;
+				}
+			}
+		}
+		if(!gotIt) {
+			System.out.println(personId + " is not in the database");
+		}
+	}
+	
+	public static void updateHealthProfile(Long personId, Double height, Double weight) {
+		boolean gotIt = false;
+		for (Map.Entry<String, Person> entry : database.entrySet()){
+			if(entry.getValue() instanceof Person) {
+				Person p = (Person) entry.getValue();
+				if(p.getId() == personId) {
+					p.sethProfile(new HealthProfile(weight, height));
+					System.out.println(p.getFirstname()
+										+" "
+										+ p.getLastname()
+										+" new health profile is: "
+										+p.gethProfile().toString());
+					gotIt=true;
+				}
+			}
+		}
+		if(!gotIt) {
+			System.out.println(personId + " is not in the database");
+		}
+	}
+	
 	
 	//public static void initializeDatabase() {
 	//	Person pallino = new Person();

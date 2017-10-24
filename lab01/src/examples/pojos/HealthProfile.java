@@ -29,6 +29,7 @@ public class HealthProfile {
 	public void setHeight(double height) {
 		this.height = height;
 	}
+	
 	public String toString() {
 		return "Height="+height+", Weight="+weight;
 	}

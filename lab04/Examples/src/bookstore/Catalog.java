@@ -15,18 +15,21 @@ public class Catalog {
 	private String title;
 
 	private String author;
+	
+	private int year;
 
 	public Catalog() {
 	}
 
 	public Catalog(String journal, String publisher, String edition,
-			String title, String author) {
+			String title, String author, int year) {
 
 		this.journal = journal;
 		this.publisher = publisher;
 		this.edition = edition;
 		this.title = title;
 		this.author = author;
+		this.year = year;
 	}
 
 	@XmlAttribute
@@ -70,5 +73,13 @@ public class Catalog {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 }

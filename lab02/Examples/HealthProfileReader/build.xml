@@ -8,6 +8,7 @@
         <mkdir dir="${BuildDir}" />
         <echo message="${BuildDir} has been created"/>
     </target>
+	
     <target name="compile" depends="init">
         <echo message="Compile target has been called"/>
         <javac srcdir="src" destdir="${BuildDir}" />

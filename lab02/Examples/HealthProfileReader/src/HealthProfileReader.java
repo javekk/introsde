@@ -34,8 +34,7 @@ public class HealthProfileReader {
 			System.out
 					.println("I cannot create people out of thing air. Give me at least a name and lastname.");
 		} else if (argCount < 2) {
-			System.out
-					.println("Are you sure you gave me ALL the information I need?");
+			System.out.println("Are you sure you gave me ALL the information I need?");
 		} else {
 			String method = args[0];
 			if (method.equals("createNewPerson")) {
@@ -52,7 +51,11 @@ public class HealthProfileReader {
 				Double height = Double.parseDouble(args[2]);
 				Double weight = Double.parseDouble(args[3]);
 				updateHealthProfile(personId, height, weight);
-			} else {
+			} else if(method.equals("getBMI")){
+				Long personId = Long.parseLong(args[1]);
+				displayBMI(personId);
+			}
+			else {
 				System.out.println("The system did not find the method '"+method+"'");
 			}
 		}
@@ -86,6 +89,13 @@ public class HealthProfileReader {
 		System.out.println(p.getFirstname() + " has updated weight to "
 				+ hp.getWeight() + " Kg. and updated height to "
 				+ hp.getHeight());
+	}
+	
+	private static void displayBMI(Long personId) {
+		Person p = database.get(personId);
+		HealthProfile hp = p.gethProfile();
+		System.out.println(p.getFirstname() + " has a BMI of "
+				+ hp.getBMI());
 	}
 
 }
